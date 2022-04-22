@@ -13,6 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('hello', function () {
+// Route::get('/index', function () {
+//     return view('index');
+// });
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/task_input', function () {
+    return view('task_input');
+});
+
+Route::get('/task_list', function () {
+    return view('task_list');
+});
+
+Route::get('/task_detail', function () {
+    return view('task_detail');
+});
+
+Route::get('samplepost', 'App\Http\Controllers\LoginController@test'); 
