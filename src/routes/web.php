@@ -13,20 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/index', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/index', function () {
+    return view('index');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/task_detail', function () {
+    return view('task_detail');
 });
 
 Route::get('/task_input', function () {
@@ -37,8 +43,5 @@ Route::get('/task_list', function () {
     return view('task_list');
 });
 
-Route::get('/task_detail', function () {
-    return view('task_detail');
-});
-
-Route::get('samplepost', 'App\Http\Controllers\LoginController@test'); 
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'getAuth']);
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'postAuth']);
