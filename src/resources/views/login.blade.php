@@ -3,6 +3,7 @@
 
 @section('content')
     
+
     <p>ログインページ</p>
 
     <p> id </p>
@@ -13,6 +14,6 @@
 
     <input type="password" name="password" maxlength="10" >
     <br>
-    <form action="" method="post">
+    <form action="{{ route('login') }}" method="post">
     <input type="submit" value="ログイン">
 @endsection
