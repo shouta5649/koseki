@@ -1,33 +1,53 @@
 <?php
 
-declare(strict_types=1); // 暗黙の型変換を防止する
-
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // ログイン機能を呼び出してくれる
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-  public function getAuth(request $request)
-  {
-    $param =['message' => 'ログインして下さい。'];
-    return view('login', $param);
-  }
-    // ログインフォームを表示させるメソッド
-    public function postAuth(Request $request)
+    /**
+     * Display the login view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
     {
-        $id = $request->id;
-        $password = $request->password;
+        return view('login');
+    }
 
-   if (Auth::attempt(['id' => $id,'password' => $password])) {
-        $msg = 'ログインしました。('.Auth::user()->name.')';
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(LoginRequest $request)
+    {   // ログイン試行
+        if (Auth::attempt(['id' => $request->input('id'), 'password' => $request->input('password')])) {
+            return redirect()->route('index'); // ログイン成功時indexに遷移
+        }
+        return redirect()->route('index'); // ログイン失敗時loginに戻る
+    }
 
-     } else {
-       $msg = 'ログインに失敗しました。';
-     }
+    /**
+     * Destroy an authenticated session.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
 
-     return view('login',['message' => $msg]);
-    } 
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }
