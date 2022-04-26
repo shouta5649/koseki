@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,5 +43,7 @@ Route::get('/task_list', function () {
     return view('task_list');
 });
 
-Route::get('/login', [App\Http\Controllers\LoginController::class, 'getAuth']);
-Route::post('/login', [App\Http\Controllers\LoginController::class, 'postAuth']);
+Route::get('login', [LoginController::class, 'create'])
+->name('login');
+
+Route::post('login', [LoginController::class, 'store']);

@@ -12,8 +12,9 @@
 
     <p>パスワード</p>
 
-    <input type="password" name="password" maxlength="10" >
+    <input type="text" name="password" maxlength="10" >
     <br>
-    <form action="{{ route('login') }}" method="post">
+    <form method="post" action="{{ route('login') }}">
+    @csrf
     <input type="submit" value="ログイン">
 @endsection
