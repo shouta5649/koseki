@@ -5,7 +5,7 @@
     
 
     <p>ログインページ</p>
-
+    <form method="POST" action="{{ route('login') }}">
     <p> id </p>
 
     <input type="text" name="id" maxlength="10">
@@ -14,7 +14,8 @@
 
     <input type="text" name="password" maxlength="10" >
     <br>
-    <form method="post" action="{{ route('login') }}">
+    
     @csrf
     <input type="submit" value="ログイン">
+    </form>
 @endsection
