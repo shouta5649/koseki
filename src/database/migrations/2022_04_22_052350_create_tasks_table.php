@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('task_id');
+            $table->string('task_name');
+            $table->string('task_det');
+            $table->date('task_date');
+            $table->datetime('task_datetime');
+            $table->integer('task_pri');
+            $table->date('task_comp');
             $table->timestamps();
         });
     }

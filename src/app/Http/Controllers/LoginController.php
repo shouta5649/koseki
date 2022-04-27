@@ -28,10 +28,12 @@ class LoginController extends Controller
      */
     public function store(LoginRequest $request)
     {   // ログイン試行
+        return view('index');
+
         if (Auth::attempt(['id' => $request->input('id'), 'password' => $request->input('password')])) {
             return redirect()->route('index'); // ログイン成功時indexに遷移
-        }
-        return redirect()->route('index'); // ログイン失敗時loginに戻る
+        } 
+        return view('index'); // ログイン失敗時loginに戻る
     }
 
     /**
