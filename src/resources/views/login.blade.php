@@ -5,9 +5,10 @@
     
     <p>ログインページ</p>
     <form method="POST" action="{{ route('login') }}">
+        @csrf
     <p> id </p>
 
-    <input type="text" name="id" maxlength="10">
+    <input type="text" name="email" maxlength="10">
 
     <p>パスワード</p>
 

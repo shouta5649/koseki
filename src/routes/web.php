@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 
 
- Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+ //Route::get('/dashboard', function () {
+  // return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
 
 //Route::get('/login', function () {
  //   return view('login');
@@ -47,15 +47,17 @@ Route::get('/task_list', function () {
 });
 Route::middleware('guest')->group(function () {
 
-//Route::get('login', [LoginController::class, 'create']);
+Route::get('login', [LoginController::class, 'create']);
 //->middleware('guest')
 
-//Route::post('login', [LoginController::class, 'store'])
+Route::post('login', [LoginController::class, 'store'])
 //->middleware('guest');
-//->name('login');
+->name('login');
 
 Route::get('task_input', [Task_inputController::class, 'create'])
 ->name('task_input');
 
 Route::post('task_input', [Task_inputController::class, 'store']);
 }); 
+
+Route::get('/logout', 'App\Http\Controllers\LoginController@destroy');
