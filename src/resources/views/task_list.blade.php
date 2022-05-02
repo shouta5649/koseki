@@ -21,6 +21,7 @@
                 <td></td>
                 <td></td>
                 <td>1</td>
+               <p> {{ $tasks ->task_name }}</p>
                 <td>2</td>
                 <td>3</td>
                 <td>4</td>

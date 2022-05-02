@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-class Task_inputController extends Controller
+class Task_InputController extends Controller
 {
     /**
      * Display the registration view.
@@ -32,7 +32,7 @@ class Task_inputController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
-    {
+    { 
 
         $task = tasks::create([
             'task_id' => $request->task_id,
@@ -48,6 +48,6 @@ class Task_inputController extends Controller
 
 
 
-        return view('task_list');
+        return redirect('task_list');
     }
 }
