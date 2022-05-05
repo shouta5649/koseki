@@ -27,13 +27,12 @@ class LoginController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)
-    {   // ログイン試行
-        return view('index');
+    {
+        $request->authenticate();
 
-        if (Auth::attempt(['id' => $request->input('id'), 'password' => $request->input('password')])) {
-            return redirect()->route('index'); // ログイン成功時indexに遷移
-        } 
-        return view('index'); // ログイン失敗時loginに戻る
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -50,6 +49,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('login');
     }
 }
