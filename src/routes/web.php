@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Task_InputController;
 use App\Http\Controllers\Task_ListController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ScheduleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
 
 //Route::get('/login', function () {
 //   return view('login');
@@ -43,9 +45,9 @@ Route::get('/task_detail', function () {
 //   return view('task_input');
 //});
 
-Route::getTasks('/task_list', function () {
+Route::get('/task_list', [Task_ListController::class,'getTasks']); {
     return view('task_list');
-});
+}
 
 Route::middleware('guest')->group(function () {
 
@@ -62,9 +64,11 @@ Route::get('task_input', [Task_InputController::class, 'create'])
 
 Route::post('task_input', [Task_InputController::class, 'store']);
 
+Route::post('/schedule-add', [ScheduleController::class, 'scheduleAdd'])
+->name('schedule-add');
 
 Route::middleware('auth')->group(function () {
 
     Route::post('logout', [LoginController::class, 'destroy'])
         ->name('logout');
-});
+}); 
