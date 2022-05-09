@@ -23,14 +23,14 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+  //  return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 //Route::get('/login', function () {
-//   return view('login');
+ //  return view('login');
 //});
 
 Route::get('/index', function () {
