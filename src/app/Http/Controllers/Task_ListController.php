@@ -9,7 +9,7 @@ class Task_ListController extends Controller
 {
     public function getTasks () {
     //
-    $tasks = DB::table('tasks')->select('task_name','task_det')->first();
+    $tasks = DB::table('tasks')->get();
     return view("task_list")->with("tasks",$tasks);
     }
 }

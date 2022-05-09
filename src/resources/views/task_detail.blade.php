@@ -7,9 +7,8 @@
           <h1>タスク詳細</h1>
 
           <br>
-
           <p>*タスク名</p>
-            <input type="text" name="task_name" maxlength="30">
+            <input type="text" name="task_name" value="タスク名" maxlength="30">
 
           <br>
 
@@ -52,7 +51,7 @@
 
           <form action="task_input.php" method="post">
 
-            <input type="submit" value="登録">
+            <input type="submit" value="更新">
 
         <button type="submit" name="delete" value="1">削除</button>
 

@@ -8,6 +8,3 @@ Alpine.start();
 
 // 追加
 
-
-window.axios = require("axios");
-require("./calendar");
