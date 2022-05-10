@@ -6,24 +6,25 @@
       <form>
           <h1>タスク詳細</h1>
 
+          <form method="POST" action="{{ route('task_detail') }}">
+
           <br>
           <p>*タスク名</p>
-            <input type="text" name="task_name" value="タスク名" maxlength="30">
-
+            <input type="text" name="task_name" value= "{{ $tasks ->task_name }}" maxlength="30">
           <br>
 
           <p>タスク詳細</p>
-            <input type="text" name="task_det" maxlength="30">
+            <input type="text" name="task_det"  value= "{{ $tasks ->task_det }}" maxlength="30">
 
           <br>
 
           <p>*日付</p>
-            <input type="date" name="task_date">
+            <input type="date" name="task_date" value= "{{ $tasks ->task_date }}">
 
           <br>
           
           <p>開始時間</p>
-            <input type="time" name="task_datetime">
+            <input type="time" name="task_datetime" value= "{{ $tasks ->task_datetime }}">
 
           <br>
           
@@ -37,7 +38,7 @@
           <br>
           
           <p>完了期限</p>
-            <input type="date" name="task_comp">
+            <input type="date" name="task_comp" value= "{{ $tasks ->task_comp }}">
 
           <br>
 
@@ -48,8 +49,6 @@
 
 
           <p>*入力必須</p>
-
-          <form action="task_input.php" method="post">
 
             <input type="submit" value="更新">
 

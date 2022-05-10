@@ -14,9 +14,8 @@ use Illuminate\Validation\Rules;
 
 class Task_DetailController extends Controller
 {
-    public function getTasks () {
+    public function input () {
     //
-    $tasks = DB::table('tasks')->get();
-    return view("task_list")->with("tasks",$tasks);
+   
     }
 }

@@ -13,6 +13,8 @@ class tasks extends Model
     
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'task_id';
+
     protected $fillable = [
         'task_id', 'task_name', 'task_det', 'task_date', 'task_datetime', 'task_pri', 'task_comp',
     ];

@@ -22,7 +22,7 @@
                 <td></td>
                 <td>1</td>
                 @foreach($tasks as $task)
-               <p><a href="http://localhost/task_detail">{{ $task ->task_name }}</a></p>
+               <p><a href="{{ route('task_detail',['id'=>$task->task_id]) }}">{{ $task ->task_name }}</a></p>
                @endforeach
                <p> {{ \Carbon\Carbon::now()->format("Y/m/d") }} </p>
                 <td>2</td>
