@@ -34,7 +34,7 @@ class Task_InputController extends Controller
     public function store(Request $request)
     { 
 
-        $task = tasks::create([
+        $tasks = tasks::create([
             'task_id' => $request->task_id,
             'task_name' => $request->task_name,
             'task_det' =>$request->task_det,
@@ -44,7 +44,7 @@ class Task_InputController extends Controller
             'task_comp' =>$request->task_comp,
         ]);
 
-        event(new Registered($task));
+        event(new Registered($tasks));
 
 
 

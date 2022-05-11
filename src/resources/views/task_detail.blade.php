@@ -3,10 +3,11 @@
 
 @section('content')
     <body>
-      <form>
+
           <h1>タスク詳細</h1>
 
-          <form method="POST" action="{{ route('task_detail') }}">
+          <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
+          @csrf
 
           <br>
           <p>*タスク名</p>
@@ -29,7 +30,7 @@
           <br>
           
           <p>優先度</p>
-            <select name='task_pri'>
+            <select name='task_pri'value= "{{ $tasks ->task_pri }}">
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -51,7 +52,8 @@
           <p>*入力必須</p>
 
             <input type="submit" value="更新">
-
+          </form>
+         @method('DELETE')
         <button type="submit" name="delete" value="1">削除</button>
 
         <a href="http://localhost/index">戻る</a>

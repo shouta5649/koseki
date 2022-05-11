@@ -23,6 +23,12 @@ return new class extends Migration
             $table->date('task_comp')->nullable()->default(null);
             $table->timestamps();
         });
+            Schema::table('tasks', function (Blueprint $table) {
+                //
+                $table->softDeletes();
+            });
+
+
     }
 
     /**

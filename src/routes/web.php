@@ -38,7 +38,7 @@ Route::get('/index', function () {
 })->name('index');
 
 Route::get('/task_detail', function () {
-   return view('task_detail');
+    return view('task_detail');
 });
 
 //Route::get('/task_input', function () {
@@ -48,17 +48,20 @@ Route::get('/task_detail', function () {
 Route::get('task_list', [Task_ListController::class, 'getTasks'])
     ->name('task_list');
 
-    Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
+Route::get('task_detail', [Task_ListController::class, 'getTasks'])
     ->name('task_detail');
 
+Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
+    ->name('task_detail/{id}');
+
 //Route::get('task_list', [CompanyController::class, 'getCalendarDates'])
-  //  ->name('task_list');
+//  ->name('task_list');
 
-  Route::get('task_detail', [Task_ListController::class, 'getTasks'])
-  ->name('task_detail');
+Route::post('/task_detail/{id}', [Task_DetailController::class, 'update'])
+    ->name('task_detail');
 
-  Route::post('task_detail', [Task_DetailController::class, 'input'])
-  ->name('task_detail');
+    Route::delete('/task_detail/{id}', [Task_detailController::class, 'destroy'])
+    ->name('task_list');
 
 Route::middleware('guest')->group(function () {
 

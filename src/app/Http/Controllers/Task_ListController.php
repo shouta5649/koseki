@@ -19,7 +19,7 @@ class Task_ListController extends Controller
     {
         $tasks = tasks::find($id);
 
-        return view('task_detail',['tasks'=>$tasks]);
+        return view('task_detail',compact('tasks'));
         
     }
 }

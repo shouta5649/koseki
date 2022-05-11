@@ -22,7 +22,8 @@
                 <td></td>
                 <td>1</td>
                 @foreach($tasks as $task)
-               <p><a href="{{ route('task_detail',['id'=>$task->task_id]) }}">{{ $task ->task_name }}</a></p>
+               <p><a href="{{ route('task_detail',[$task->task_id]) }}">{{ $task ->task_name }}</a></p>
+               @csrf
                @endforeach
                <p> {{ \Carbon\Carbon::now()->format("Y/m/d") }} </p>
                 <td>2</td>
