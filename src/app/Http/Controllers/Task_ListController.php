@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Models\tasks;
 use Illuminate\Http\Request;
 
 class Task_ListController extends Controller
 {
     public function getTasks () {
     //
-    $tasks = DB::table('tasks')->select('task_name','task_det')->first();
+    $tasks = DB::table('tasks')->whereNull('deleted_at')->get();
     return view("task_list")->with("tasks",$tasks);
+    }
+
+    public function show($id)
+    {
+        $tasks = tasks::find($id);
+
+        return view('task_detail',compact('tasks'));
+        
     }
 }

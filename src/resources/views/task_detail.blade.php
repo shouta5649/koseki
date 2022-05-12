@@ -2,61 +2,65 @@
 
 
 @section('content')
-    <body>
-      <form>
-          <h1>タスク詳細</h1>
 
-          <br>
+<body>
 
-          <p>*タスク名</p>
-            <input type="text" name="task_name" maxlength="30">
+  <h1>タスク詳細</h1>
 
-          <br>
+  <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
+    @csrf
 
-          <p>タスク詳細</p>
-            <input type="text" name="task_det" maxlength="30">
+    <br>
+    <p>*タスク名</p>
+    <input type="text" name="task_name" value="{{ $tasks ->task_name }}" maxlength="30">
+    <br>
 
-          <br>
+    <p>タスク詳細</p>
+    <input type="text" name="task_det" value="{{ $tasks ->task_det }}" maxlength="30">
 
-          <p>*日付</p>
-            <input type="date" name="task_date">
+    <br>
 
-          <br>
-          
-          <p>開始時間</p>
-            <input type="time" name="task_datetime">
+    <p>*日付</p>
+    <input type="date" name="task_date" value="{{ $tasks ->task_date }}">
 
-          <br>
-          
-          <p>優先度</p>
-            <select name='task_pri'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-             </select>
-          
-          <br>
-          
-          <p>完了期限</p>
-            <input type="date" name="task_comp">
+    <br>
 
-          <br>
+    <p>開始時間</p>
+    <input type="time" name="task_datetime" value="{{ $tasks ->task_datetime }}">
 
-          <p> 達成日</p>
-          <input type="date" name="dating">
+    <br>
 
-          <p>ステータス</p>
+    <p>優先度</p>
+    <select name='task_pri' value="{{ $tasks ->task_pri }}">
+      <option value='1'>1</option>
+      <option value='2'>2</option>
+      <option value='3'>3</option>
+    </select>
+
+    <br>
+
+    <p>完了期限</p>
+    <input type="date" name="task_comp" value="{{ $tasks ->task_comp }}">
+
+    <br>
+
+    <p> 達成日</p>
+    <input type="date" name="dating">
+
+    <p>ステータス</p>
 
 
-          <p>*入力必須</p>
+    <p>*入力必須</p>
 
-          <form action="task_input.php" method="post">
+    <input type="submit" value="更新">
+  </form>
+  <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
+  @method('DELETE')
+  @csrf
+  <button type="submit" name="delete" value="1">削除</button>
+  </form>
 
-            <input type="submit" value="登録">
+  <a href="http://localhost/index">戻る</a>
 
-        <button type="submit" name="delete" value="1">削除</button>
-
-        <a href="http://localhost/index">戻る</a>
-        
-      </form>
-@endsection
+  </form>
+  @endsection
