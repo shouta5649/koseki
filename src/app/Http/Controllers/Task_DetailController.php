@@ -32,12 +32,12 @@ class Task_DetailController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request,$id,tasks $tasks)
     {
         $tasks = tasks::find($id);
 
         $tasks->delete();
 
-        return redirect()->route('task_list');
+        return redirect('task_list');
     }
 }

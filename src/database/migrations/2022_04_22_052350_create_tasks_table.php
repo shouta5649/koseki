@@ -23,12 +23,10 @@ return new class extends Migration
             $table->date('task_comp')->nullable()->default(null);
             $table->timestamps();
         });
-            Schema::table('tasks', function (Blueprint $table) {
-                //
-                $table->softDeletes();
-            });
-
-
+        Schema::table('tasks', function (Blueprint $table) {
+            //
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -37,7 +35,14 @@ return new class extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('tasks');
+    { {
+            Schema::dropIfExists('tasks');
+        }
+
+        Schema::table('tasks', function (Blueprint $table) {
+
+            // 5.8 以降は専用のスキーマビルダが用意されている
+            $table->dropSoftDeletes();
+        });
     }
 };

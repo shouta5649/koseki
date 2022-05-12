@@ -11,7 +11,7 @@ class Task_ListController extends Controller
 {
     public function getTasks () {
     //
-    $tasks = DB::table('tasks')->get();
+    $tasks = DB::table('tasks')->whereNull('deleted_at')->get();
     return view("task_list")->with("tasks",$tasks);
     }
 

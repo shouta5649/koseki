@@ -60,7 +60,7 @@ Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
 Route::post('/task_detail/{id}', [Task_DetailController::class, 'update'])
     ->name('task_detail');
 
-    Route::delete('/task_detail/{id}', [Task_detailController::class, 'destroy'])
+Route::delete('/task_detail/{id}', [Task_detailController::class, 'destroy'])
     ->name('task_list');
 
 Route::middleware('guest')->group(function () {
