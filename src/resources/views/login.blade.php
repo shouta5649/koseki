@@ -2,21 +2,24 @@
 
 
 @section('content')
-    
 
-    <p>ログインページ</p>
-    <form method="POST" action="{{ route('login') }}">
+<div id="form">
+    <p class="form-title">ログインページ</p>
+<form method="POST" action="{{ route('login') }}">
     @csrf
     <p> id </p>
-
+    <p class="mail">
     <input type="text" name="email" maxlength="10">
-
+</p>
     <p>パスワード</p>
+    <p class="pass">
+    <input type="text" name="password" maxlength="10">
+</p>
+    
 
-    <input type="text" name="password" maxlength="10" >
-    <br>
-    
-    
+<p class="submit">
     <input type="submit" value="ログイン">
-    </form>
+</p>
+</form>
+</div>
 @endsection

@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Task_InputController;
 use App\Http\Controllers\Task_ListController;
 use App\Http\Controllers\Task_DetailController;
+use App\Http\Controllers\IndexController;
+
 use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/index', function () {
     return view('index');
-})->name('index');
+});
 
 Route::get('/task_detail', function () {
     return view('task_detail');
@@ -45,8 +47,12 @@ Route::get('/task_detail', function () {
 //   return view('task_input');
 //});
 
-Route::get('task_list', [Task_ListController::class, 'getTasks'])
+//Route::get('task_list', [Task_ListController::class, 'getTasks'])
+//  ->name('task_list');
+
+Route::get('task_list', [Task_ListController::class, 'index'])
     ->name('task_list');
+
 
 Route::get('task_detail', [Task_ListController::class, 'getTasks'])
     ->name('task_detail');
