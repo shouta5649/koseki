@@ -45,7 +45,7 @@ class Task_ListController extends Controller
     public function index(Request $request) {
 
         if ($request->ajax()) {
-          $tasks = DB::table('tasks')->select('task_name')->get();
+          $tasks = DB::table('tasks')->select('task_name','task_date')->get();
           return response()->json($tasks);
           }
       

@@ -22,6 +22,7 @@
           dayCellContent: function(e) {
     e.dayNumberText = e.dayNumberText.replace('日', '');
 },  
+
 initialDate: '2022-05-06',
         navLinks: true, // can click day/week names to navigate views
         businessHours: true, // display business hours

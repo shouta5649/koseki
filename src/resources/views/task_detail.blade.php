@@ -1,18 +1,31 @@
 @extends('layout')
 
+<style>
+  html {
+      height: 100%;
+      margin: 0 auto;
+      padding: 0;
+      display: table;
+  }
+
+  body {
+      min-height: 100%;
+      margin: 0 auto;
+      padding: 0;
+      display: table-cell;
+      vertical-align: middle;
+  }
+</style>
 
 @section('content')
 
-<body>
-
+<form class="row g-3" action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
+  @csrf
   <h1>タスク詳細</h1>
-
-  <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
-    @csrf
-
-    <br>
-    <p>*タスク名</p>
-    <input type="text" name="task_name" value="{{ $tasks ->task_name }}" maxlength="30">
+  <div class="col-md-6">
+    
+    *タスク名
+    <input class="form-control" type="text" name="task_name" value="{{ $tasks ->task_name }}" maxlength="30">
     <br>
 
     <p>タスク詳細</p>
@@ -21,7 +34,7 @@
     <br>
 
     <p>*日付</p>
-    <input type="date" name="task_date" value="{{ $tasks ->task_date }}">
+    <input type="date" name="task_date" min="<?php echo date('Y-m-d'); ?>" value="{{ $tasks ->task_date }}">
 
     <br>
 
@@ -40,12 +53,12 @@
     <br>
 
     <p>完了期限</p>
-    <input type="date" name="task_comp" value="{{ $tasks ->task_comp }}">
+    <input type="date" name="task_comp" min="<?php echo date('Y-m-d'); ?>" value="{{ $tasks ->task_comp }}">
 
     <br>
 
     <p> 達成日</p>
-    <input type="date" name="dating">
+    <input type="date" name="dating"min="<?php echo date('Y-m-d'); ?>" >
 
     <p>ステータス</p>
 
