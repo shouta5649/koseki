@@ -19,17 +19,15 @@ class Task_ListController extends Controller
     public function store(Request $request)
     { 
 
-        $tasks = tasks::create([
-            'task_id' => $request->task_id,
-            'task_name' => $request->task_name,
-            'task_det' =>$request->task_det,
-            'task_date' =>$request->task_date,
-            'task_datetime' =>$request->task_datetime,
-            'task_pri' =>$request->task_pri,
-            'task_comp' =>$request->task_comp,
-        ]);
-
-        event(new Registered($tasks));
+        $tasks = new tasks;
+            $tasks->task_id = $request->input('task_id');
+            $tasks->task_name = $request->input('task_name');
+            $tasks->task_det = $request->input('task_det');
+            $tasks->task_dat = date('Y-m-d', $request->input('task_date')/ 1000);
+            $tasks->task_datetime = $request->input('task_datetime');
+            $tasks->task_pri = $request->input('task_pri');
+            $tasks->task_comp = $request->input('task_comp');
+            $tasks->save();
 
 
 
@@ -42,10 +40,10 @@ class Task_ListController extends Controller
         return view('task_detail',compact('tasks'));
         
     }
-    public function index(Request $request) {
+    public function getEvent(Request $request) {
 
         if ($request->ajax()) {
-          $tasks = DB::table('tasks')->select('task_name','task_date')->get();
+          $tasks = DB::table('tasks')->select('task_id as id','task_name as title','task_date as start')->get();
           return response()->json($tasks);
           }
       

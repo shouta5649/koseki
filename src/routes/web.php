@@ -50,9 +50,10 @@ Route::get('/task_detail', function () {
 //Route::get('task_list', [Task_ListController::class, 'getTasks'])
 //  ->name('task_list');
 
-Route::get('task_list', [Task_ListController::class, 'index'])
+Route::get('task_list', [Task_ListController::class, 'getEvent'])
     ->name('task_list');
 
+//Route::post('task_list', [Task_ListController::class, 'store']);
 
 Route::get('task_detail', [Task_ListController::class, 'getTasks'])
     ->name('task_detail');

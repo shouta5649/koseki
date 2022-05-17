@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('task_det');
             $table->date('task_date');
             $table->time('task_datetime');
-            $table->integer('task_pri');
+            $table->string('task_pri');
             $table->date('task_comp')->nullable()->default(null);
             $table->timestamps();
         });
