@@ -1,21 +1,6 @@
 @extends('layout')
 
-<style>
-  html {
-      height: 100%;
-      margin: 0 auto;
-      padding: 0;
-      display: table;
-  }
 
-  body {
-      min-height: 100%;
-      margin: 0 auto;
-      padding: 0;
-      display: table-cell;
-      vertical-align: middle;
-  }
-</style>
 @section('content')
 
 
@@ -48,9 +33,9 @@
   <div class="col-md-2">
     <label for="inputState" class="form-label">優先度</label>
     <select name='task_pri'class="form-select">
-      <option value='1'>1</option>
-      <option value='2'>2</option>
-      <option value='3'>3</option>
+      <option value='#ff0000'>優先(赤)</option>
+      <option value='#00ffff'>それなりに(青)</option>
+      <option value='#00ff00'>どっちでも(緑)</option>
     </select>
   </div>
 

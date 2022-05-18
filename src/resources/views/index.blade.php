@@ -1,20 +1,5 @@
 @extends('layout')
-<style>
-    html {
-        height: 100%;
-        margin: 0 auto;
-        padding: 0;
-        display: table;
-    }
-  
-    body {
-        min-height: 100%;
-        margin: 0 auto;
-        padding: 0;
-        display: table-cell;
-        vertical-align: middle;
-    }
-  </style>
+
 
 @section('content')
 

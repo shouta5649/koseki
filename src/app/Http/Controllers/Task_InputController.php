@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
 
 class Task_InputController extends Controller
 {
@@ -50,4 +51,26 @@ class Task_InputController extends Controller
 
         return redirect('task_list');
     }
+    public function getEvent(Request $request) {
+
+       
+      
+      return view('task_list');
+      }
+
+      public function getTasks(Request $request) {
+
+        $tasks = DB::table('tasks')->select('task_id as id','task_name as title','task_date as start','task_pri as color','deleted_at')->whereNull('deleted_at')->get();
+        
+        return response()->json($tasks);
+        }
+
+        public function show($id)
+        {
+            $tasks = tasks::find($id);
+    
+            return response()->json($tasks);
+            
+        }
+
 }

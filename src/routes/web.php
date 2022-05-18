@@ -47,11 +47,17 @@ Route::get('/task_detail', function () {
 //   return view('task_input');
 //});
 
+Route::get('/task_list', function () {
+    return view('task_list');
+});
+
 //Route::get('task_list', [Task_ListController::class, 'getTasks'])
 //  ->name('task_list');
 
-Route::get('task_list', [Task_ListController::class, 'getEvent'])
+Route::get('task_list', [Task_InputController::class, 'getEvent'])
     ->name('task_list');
+
+Route::post('task_list', [Task_InputController::class, 'store']);
 
 //Route::post('task_list', [Task_ListController::class, 'store']);
 
@@ -60,6 +66,10 @@ Route::get('task_detail', [Task_ListController::class, 'getTasks'])
 
 Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
     ->name('task_detail/{id}');
+
+    Route::get('/task_detail/{id}', [Task_InputController::class, 'show'])
+    ->name('task_detail/{id}');
+
 
 //Route::get('task_list', [CompanyController::class, 'getCalendarDates'])
 //  ->name('task_list');
