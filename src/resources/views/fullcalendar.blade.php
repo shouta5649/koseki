@@ -23,14 +23,9 @@
     e.dayNumberText = e.dayNumberText.replace('日', '');
 },  
 
-events: [
-  {
-          title:'aaa',
-          start:'2022-05-21',
-          url: 'http://google.com/'
-}
-],
-//'api/task_list',
+events: 'api/task_list',
+
+
 eventClick: function(info) {
   
   }

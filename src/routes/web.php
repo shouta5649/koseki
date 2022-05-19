@@ -67,8 +67,6 @@ Route::get('task_detail', [Task_ListController::class, 'getTasks'])
 Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
     ->name('task_detail/{id}');
 
-    Route::get('/task_detail/{id}', [Task_InputController::class, 'show'])
-    ->name('task_detail/{id}');
 
 
 //Route::get('task_list', [CompanyController::class, 'getCalendarDates'])

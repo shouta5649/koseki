@@ -21,7 +21,7 @@ class tasks extends Model
     protected $primaryKey = 'task_id';
 
     protected $fillable = [
-        'task_id', 'task_name', 'task_det', 'task_date', 'task_datetime', 'task_pri', 'task_comp',
+        'task_id', 'task_name', 'task_det', 'task_date', 'task_datetime', 'task_pri', 'task_comp','task_reach','task_sta'
     ];
 
 

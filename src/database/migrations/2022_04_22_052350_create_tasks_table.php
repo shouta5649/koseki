@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('task_id');
             $table->string('task_name');
-            $table->string('task_det');
+            $table->string('task_det')->nullable()->default(null);
             $table->date('task_date');
-            $table->time('task_datetime');
+            $table->time('task_datetime')->nullable()->default(null);
             $table->string('task_pri');
             $table->date('task_comp')->nullable()->default(null);
+            $table->date('task_reach')->nullable()->default(null);
+            $table->integer('task_sta');
             $table->timestamps();
         });
         Schema::table('tasks', function (Blueprint $table) {

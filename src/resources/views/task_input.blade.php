@@ -42,10 +42,17 @@
   <div class="col-md-2">
 
     <label for="inputZip" class="form-label">完了期限</label>
-    <input class="form-control" type="date" name="task_comp" min="<?php echo date('Y-m-d'); ?>" value="<?php echo date('Y-m-d'); ?>">
+    <input class="form-control" type="date" name="task_comp" min="<?php echo date('Y-m-d'); ?>" >
   
   </div>
 
+  <div class="col-md-2">
+    <label for="inputState" class="form-label">ステータス</label>
+    <select class="form-select" name='task_sta'>
+      <option value='1'>進行中</option>
+    </select>
+  </div>
+  
 <p class="card-text"><input class="btn btn-primary" type="submit" value="登録">
 
 

@@ -27,6 +27,7 @@ class Task_ListController extends Controller
             $tasks->task_datetime = $request->input('task_datetime');
             $tasks->task_pri = $request->input('task_pri');
             $tasks->task_comp = $request->input('task_comp');
+            $tasks->task_sta = $request->input('task_sta');
             $tasks->save();
 
 
