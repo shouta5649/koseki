@@ -75,10 +75,9 @@
   <div class="col-md-2">
     達成日
     @if($tasks->task_sta==2)
-    <input class="form-control" type="date" name="task_reach" min="<?php echo date('Y-m-d'); ?>"
-      value="{{ $tasks ->task_reach }}" >
+    <input class="form-control" type="date" name="task_reach" value="{{ $tasks ->task_reach }}" >
     @else
-    <input class="form-control" type="date" name="task_reach" min="<?php echo date('Y-m-d'); ?>">
+    <input class="form-control" type="date" name="task_reach" min="<?php echo date('Y-m-d'); ?>" value="<?php echo date('Y-m-d'); ?>">
     @endif
   </div>
 
@@ -99,6 +98,10 @@
 
 
   @if($tasks->task_sta==2)
+  <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
+    @method('DELETE')
+    @csrf
+    <p class="card-text"><button class="btn btn-primary" type="submit" name="delete" value="1">削除</button>
   <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_list">戻る</a>
     @else
   <p class="card-text"><input class="btn btn-primary" type="submit" value="更新">
