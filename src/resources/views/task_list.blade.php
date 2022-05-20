@@ -9,7 +9,7 @@
 <form class="row g-3" method="POST" action="{{ route('task_input') }}">
   @csrf
   <div class="col-md-6">
-    <input class="form-control" type="text" name="task_name" placeholder="タスク名" maxlength="30">
+    <input class="form-control" type="text" name="task_name" maxlength="30" placeholder="タスク名" >
     *入力必須
   </div>
   <div class="col-md-6">
@@ -18,17 +18,16 @@
   </div>
 
   <div class="col-md-2">
-    <label for="inputZip" class="form-label">日付</label>
+    <label for="inputZip" class="form-label">開始日付</label>
     <input class="form-control" type="date" name="task_date" min="<?php echo date('Y-m-d'); ?>"
       value="<?php echo date('Y-m-d'); ?>">
-    *入力必須
   </div>
 
-  <div class="col-md-2">
+ <!-- <div class="col-md-2">
     <label for="inputZip" class="form-label">開始時間</label>
     <input class="form-control" type="time" name="task_datetime">
   </div>
-  <div class="col-md-2">
+  <div class="col-md-2"> -->
 
     <label for="inputZip" class="form-label">完了期限</label>
     <input class="form-control" type="date" name="task_comp" min="<?php echo date('Y-m-d'); ?>">

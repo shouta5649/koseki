@@ -62,7 +62,7 @@ class Task_InputController extends Controller
 
     public function getTasks(Request $request)
     {
-        $tasks = DB::table('tasks')->select(DB::raw('CONCAT(\'/task_detail/\',task_id)as url'), 'task_id as id', 'task_name as title', 'task_date as start', 'task_pri as color', 'deleted_at')->whereNull('deleted_at')->get();
+        $tasks = DB::table('tasks')->select(DB::raw('CONCAT(\'/task_detail/\',task_id)as url'), 'task_id as id', 'task_name as title', 'task_date as start', 'task_comp as end','task_pri as color', 'deleted_at')->whereNull('deleted_at')->get();
         
         return response()->json($tasks);
     }

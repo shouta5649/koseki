@@ -51,8 +51,8 @@ Route::get('/task_list', function () {
     return view('task_list');
 });
 
-//Route::get('task_list', [Task_ListController::class, 'getTasks'])
-//  ->name('task_list');
+Route::get('task_input', [Task_ListController::class, 'getTasks'])
+  ->name('task_input');
 
 Route::get('task_list', [Task_InputController::class, 'getEvent'])
     ->name('task_list');

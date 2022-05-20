@@ -41,21 +41,24 @@
   </div>
 
   <div class="col-md-2">
-    日付
+    開始日付
     <input class="form-control" type="date" name="task_date" value="{{ $tasks ->task_date }}">
     *入力必須
   </div>
 
-  <div class="col-md-2">
+ <!-- <div class="col-md-2">
     開始時間
     <input class="form-control" type="time" name="task_datetime" value="{{ $tasks ->task_datetime }}">
-  </div>
+  </div> -->
 
   <div class="col-md-2">
     優先度
     @if($tasks->task_sta==2)
     <select class="form-select" name='task_pri' value="{{ $tasks ->task_pri }}" >
-      <option value='#808080'>完了</option>
+      <option value='#808080'>完了(灰)</option>
+      <option value='#ff0000'>優先(赤)</option>
+      <option value='#00ffff'>それなりに(青)</option>
+      <option value='#00ff00'>どっちでも(緑)</option>
     </select>
     @else
     <select class="form-select" name='task_pri' value="{{ $tasks ->task_pri }}">
@@ -64,6 +67,7 @@
       <option value='#00ff00'>どっちでも(緑)</option>
       <option value='#808080'>完了(灰)</option>
     </select>
+    *完了の場合は完了にする
     @endif
   </div>
 
@@ -86,24 +90,18 @@
     @if($tasks->task_sta==2)
     <select class="form-select" name='task_sta' >
       <option value='2'>完了</option>
+      <option value='1'>進行中</option>
     </select>
     @else
     <select class="form-select" name='task_sta'>
       <option value='1'>進行中</option>
       <option value='2'>完了</option>
-      <option value='3'>期限切れ</option>
     </select>
     @endif
   </div>
 
 
-  @if($tasks->task_sta==2)
-  <form action="{{ route('task_detail', ['id'=>$tasks->task_id]) }}" method="POST">
-    @method('DELETE')
-    @csrf
-    <p class="card-text"><button class="btn btn-primary" type="submit" name="delete" value="1">削除</button>
-  <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_list">戻る</a>
-    @else
+
   <p class="card-text"><input class="btn btn-primary" type="submit" value="更新">
 </form>
 
@@ -116,6 +114,5 @@
 <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_list">戻る</a>
 
   </form>
-  @endif
 
   @endsection

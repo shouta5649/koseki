@@ -11,11 +11,12 @@ use Illuminate\Auth\Events\Registered;
 
 class Task_ListController extends Controller
 {
-   /* public function getTasks () {
+    public function getTasks () {
     //
     $tasks = DB::table('tasks')->whereNull('deleted_at')->get();
-    return view("task_list")->with("tasks",$tasks);
-    }*/
+    return view("task_input")->with("tasks",$tasks);
+    }
+    
     public function store(Request $request)
     { 
 
