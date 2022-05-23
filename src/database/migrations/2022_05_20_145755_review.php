@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('review_layer'); //どういった層が楽しめる作品かのジャンルわけ
             $table->string('review_genre'); //作品のジャンル
             $table->string('review_impre') ->nullable()->default(null);//感想
+            $table->unsignedInteger('task_id');
             $table->timestamps();
         });
     }

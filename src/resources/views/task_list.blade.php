@@ -6,7 +6,7 @@
 
 
 <h1>タスク一覧</h1>
-<form class="row g-3" method="POST" action="{{ route('task_input') }}">
+<form class="row g-3" method="POST" action="{{ route('task_end') }}">
   @csrf
   <div class="col-md-6">
     <input class="form-control" type="text" name="task_name" maxlength="30" placeholder="タスク名" >

@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\Task_InputController;
+use App\Http\Controllers\Task_EndController;
 use App\Http\Controllers\Task_ListController;
 use App\Http\Controllers\Task_DetailController;
 use App\Http\Controllers\IndexController;
-
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReviewInputController;
 use App\Http\Controllers\CompanyController;
 /*
 |--------------------------------------------------------------------------
@@ -43,31 +44,49 @@ Route::get('/task_detail', function () {
     return view('task_detail');
 });
 
-//Route::get('/task_input', function () {
-//   return view('task_input');
+//Route::get('/task_end', function () {
+//   return view('task_end');
 //});
 
 Route::get('/task_list', function () {
     return view('task_list');
 });
 
-Route::get('task_input', [Task_ListController::class, 'getTasks'])
-  ->name('task_input');
+Route::get('/review', function () {
+    return view('review');
+});
 
-Route::get('task_list', [Task_InputController::class, 'getEvent'])
+Route::get('/review_input', function () {
+    return view('review_input');
+});
+
+Route::get('task_end', [Task_EndController::class, 'getEnds'])
+    ->name('task_end');
+
+Route::get('task_list', [Task_EndController::class, 'getEvent'])
     ->name('task_list');
 
-Route::post('task_list', [Task_InputController::class, 'store']);
+Route::post('task_list', [Task_EndController::class, 'store']);
 
 //Route::post('task_list', [Task_ListController::class, 'store']);
 
 Route::get('task_detail', [Task_ListController::class, 'getTasks'])
     ->name('task_detail');
 
+//Route::get('review', [Task_ListController::class, 'getTasks'])
+ //   ->name('review');
+
 Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
     ->name('task_detail/{id}');
 
+Route::get('/review/{id}', [ReviewController::class, 'show'])
+    ->name('review/{id}');
 
+Route::get('/review/{id}', [Task_EndController::class, 'getEnds'])
+    ->name('review/{id}');
+
+Route::post('review_input', [ReviewInputController::class, 'store'])
+    ->name('review_input');
 
 //Route::get('task_list', [CompanyController::class, 'getCalendarDates'])
 //  ->name('task_list');
@@ -75,7 +94,7 @@ Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
 Route::post('/task_detail/{id}', [Task_DetailController::class, 'update'])
     ->name('task_detail');
 
-Route::delete('/task_detail/{id}', [Task_detailController::class, 'destroy'])
+Route::delete('/task_detail/{id}', [Task_DetailController::class, 'destroy'])
     ->name('task_list');
 
 Route::middleware('guest')->group(function () {
@@ -88,10 +107,8 @@ Route::middleware('guest')->group(function () {
     //->middleware('guest');
 });
 
-Route::get('task_input', [Task_InputController::class, 'create'])
-    ->name('task_input');
 
-Route::post('task_input', [Task_InputController::class, 'store']);
+Route::post('task_end', [Task_EndController::class, 'store']);
 
 
 Route::middleware('auth')->group(function () {

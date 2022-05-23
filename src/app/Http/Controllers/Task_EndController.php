@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
 
-class Task_InputController extends Controller
+class Task_EndController extends Controller
 {
     /**
      * Display the registration view.
@@ -21,7 +21,7 @@ class Task_InputController extends Controller
      */
     public function create()
     {
-        return view('task_input');
+        return view('task_end');
     }
 
     /**
@@ -66,10 +66,17 @@ class Task_InputController extends Controller
         
         return response()->json($tasks);
     }
+
     public function show($id)
     {
         $tasks = tasks::find($id);
 
         return view('task_detail', compact('tasks'));
     }
+
+    public function getEnds () {
+        //
+        $tasks = DB::table('tasks')->whereNull('deleted_at')->where('task_sta','=','2')->get();
+        return view("task_end")->with("tasks",$tasks);
+        }
 }
