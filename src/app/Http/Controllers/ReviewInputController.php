@@ -18,19 +18,25 @@ class ReviewInputController extends Controller
     public function store(Request $request)
 {
 
-    $review = review::create([
-        'review_id' => $request->review_id,
-        'review_ice' => $request->review_ice,
-        'review_date' => $request->review_date,
-        'review_layer' => $request->review_layer,
-        'review_genre' => $request->review_genre,
-        'review_impre' => $request->review_impre,
-    ]);
+    $review = new review;
+        $review->review_id = $request->input('review_id');
+        $review->review_ice = $request->input('review_ice');
+        $review->review_date = $request->input('review_date');
+        $review->review_layer = $request->input('review_layer');
+        $review->review_genre = $request->input('review_genre');
+        $review->review_impre = $request->input('review_impre');
+        $review->task_id = $request->input('task_id');
+        $review->save();
 
-    event(new Registered($review));
-
-
-
-    return redirect()->route('review',['id' => $review->review_id]);
+        return redirect()->route('review',['id' => $review->task_id]);
+    
 }
+public function show($id)
+{
+    $tasks = tasks::find($id);
+
+    return view('review_input',compact('tasks'));
+    
+}
+
 }

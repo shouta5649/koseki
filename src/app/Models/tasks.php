@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\review;
 
 class tasks extends Model
 {
@@ -23,5 +24,7 @@ class tasks extends Model
     protected $fillable = [
         'task_id', 'task_name', 'task_det', 'task_date', 'task_datetime', 'task_pri', 'task_comp','task_reach','task_sta'
     ];
-
+    public function review(){
+        return $this->hasOne(review::class);
+      }
 }

@@ -19,9 +19,9 @@ class ReviewController extends Controller
 
     public function show($id)
     {
-        $tasks = tasks::find($id);
+        $task = tasks::find($id);
 
-        return view('review',compact('tasks'));
+        return view('review',compact('task'));
         
     }
     public function getReview () {

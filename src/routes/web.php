@@ -74,16 +74,19 @@ Route::get('task_detail', [Task_ListController::class, 'getTasks'])
     ->name('task_detail');
 
 //Route::get('review', [Task_ListController::class, 'getTasks'])
- //   ->name('review');
+//   ->name('review');
 
 Route::get('/task_detail/{id}', [Task_ListController::class, 'show'])
     ->name('task_detail/{id}');
 
+Route::get('review', [ReviewController::class, 'getReview'])
+    ->name('review');
+
 Route::get('/review/{id}', [ReviewController::class, 'show'])
     ->name('review/{id}');
 
-Route::get('/review/{id}', [Task_EndController::class, 'getEnds'])
-    ->name('review/{id}');
+Route::get('/review_input/{id}', [ReviewInputController::class, 'show'])
+    ->name('review_input/{id}');
 
 Route::post('review_input', [ReviewInputController::class, 'store'])
     ->name('review_input');

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('review', function (Blueprint $table) {
             $table->increments('review_id'); //レヴューID
             $table->string('review_ice'); //レヴューの評価
-            $table->date('review_date'); //レヴューを登録した日付
+            $table->date('review_date')->nullable()->default(null); //レヴューを登録した日付
             $table->string('review_layer'); //どういった層が楽しめる作品かのジャンルわけ
             $table->string('review_genre'); //作品のジャンル
             $table->string('review_impre') ->nullable()->default(null);//感想
