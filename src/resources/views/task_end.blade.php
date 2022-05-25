@@ -12,7 +12,7 @@
 
   @foreach($tasks as $task)
 
-  <p><a href="{{ route('review/{id}',[$task->task_id]) }}">{{ $task->task_name }}</a></p>
+  <p><a href="{{ route('review_input/{id}',[$task->task_id]) }}">{{ $task->task_name }}</a></p>
   @csrf
 
   @endforeach

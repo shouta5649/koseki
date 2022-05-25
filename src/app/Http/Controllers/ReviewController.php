@@ -20,13 +20,28 @@ class ReviewController extends Controller
     public function show($id)
     {
         $task = tasks::find($id);
-
-        return view('review',compact('task'));
-        
+        $review = $task->review;
+        return view('review',compact('task','review'));
     }
+    
     public function getReview () {
         //
         $review = DB::table('review')->get();
         return view("review")->with("review",$review);
         }
+
+        public function update(Request $request, $id,review $review)
+        {
+    
+            $review = review::find($id);
+    
+            $review-> review_ice = $request->review_ice;
+            $review-> review_layer = $request->review_layer;
+            $review-> review_genre = $request->review_genre;
+            $review-> review_impre = $request->review_impre;
+            $review->save();
+    
+            return redirect()->route('review',['id' => $review->review_id]);
+        }
+
 }

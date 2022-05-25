@@ -15,6 +15,7 @@
           <option value='3'>合わなかった</option>
         </select>
     </div>
+    
     <div class="col-md-2">
         ジャンル
         <select class="form-select" name='review_genre' >
@@ -49,9 +50,9 @@
     <input type="hidden" name="task_id" value="1">
 
     <p class="card-text"><input class="btn btn-primary" type="submit" value="登録">
-
-
 </form>
+<br>
+<p class="card-text"><a class="btn btn-primary" href="http://localhost/task_end">戻る</a>
 <br>
 <p class="card-text"><a class="btn btn-primary" href="http://localhost/index">トップページ</a>
 @endsection

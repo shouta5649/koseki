@@ -100,8 +100,6 @@
     @endif
   </div>
 
-
-
   <p class="card-text"><input class="btn btn-primary" type="submit" value="更新">
 </form>
 

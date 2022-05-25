@@ -23,6 +23,10 @@ return new class extends Migration
             $table->unsignedInteger('task_id');
             $table->timestamps();
         });
+        Schema::table('review', function (Blueprint $table) {
+            //
+            $table->softDeletes();
+        });
     }
 
     /**

@@ -17,6 +17,7 @@ class ReviewInputController extends Controller
 {
     public function store(Request $request)
 {
+    
 
     $review = new review;
         $review->review_id = $request->input('review_id');
@@ -28,15 +29,22 @@ class ReviewInputController extends Controller
         $review->task_id = $request->input('task_id');
         $review->save();
 
-        return redirect()->route('review',['id' => $review->task_id]);
+        return redirect()->route('review/{id}',$review->review_id);
     
 }
 public function show($id)
 {
-    $tasks = tasks::find($id);
+    $task = tasks::find($id);
 
-    return view('review_input',compact('tasks'));
+    return view('review_input',compact('task'));
     
 }
 
+public function showreview($id)
+{
+    $review = review::find($id);
+
+    return view('review',compact('review'));
+    
+}
 }

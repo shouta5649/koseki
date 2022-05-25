@@ -25,6 +25,6 @@ class tasks extends Model
         'task_id', 'task_name', 'task_det', 'task_date', 'task_datetime', 'task_pri', 'task_comp','task_reach','task_sta'
     ];
     public function review(){
-        return $this->hasOne(review::class);
+        return $this->hasOne(review::class,'task_id','task_id');
       }
 }
