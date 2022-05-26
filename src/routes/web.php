@@ -97,8 +97,11 @@ Route::post('review_input', [ReviewInputController::class, 'store'])
 Route::post('/task_detail/{id}', [Task_DetailController::class, 'update'])
     ->name('task_detail');
 
-    Route::post('/review/{id}', [ReviewController::class, 'update'])
-    ->name('review');
+Route::get('/review_edit/{id}', [ReviewController::class, 'editshow'])
+    ->name('review_edit/{id}');
+
+Route::post('/review_edit/{id}', [ReviewController::class, 'update'])
+    ->name('review_edit');
 
 Route::delete('/task_detail/{id}', [Task_DetailController::class, 'destroy'])
     ->name('task_list');

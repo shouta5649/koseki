@@ -41,7 +41,13 @@ class ReviewController extends Controller
             $review-> review_impre = $request->review_impre;
             $review->save();
     
-            return redirect()->route('review',['id' => $review->review_id]);
+            return redirect()->route('review/{id}',$review->review_id);
+        }   
+         public function editshow($id)
+        {
+            $task = tasks::find($id);
+            $review = $task->review;
+            return view('review_edit',compact('task','review'));
         }
 
 }

@@ -35,8 +35,8 @@ class ReviewInputController extends Controller
 public function show($id)
 {
     $task = tasks::find($id);
-
-    return view('review_input',compact('task'));
+    $review = $task->review;
+    return view('review_input',compact('task','review'));
     
 }
 

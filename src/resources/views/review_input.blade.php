@@ -5,8 +5,6 @@
 <form class="row g-3" method="POST" action="{{ route('review_input') }}">
     @csrf
     
-    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
-    
     <div class="col-md-2">
         評価
         <select class="form-select" name='review_ice' >
@@ -47,9 +45,10 @@
         var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
     </script>
 
-    <input type="hidden" name="task_id" value="1">
+    <input type="hidden" name="task_id" value= {{$task->task_id}}>
 
     <p class="card-text"><input class="btn btn-primary" type="submit" value="登録">
+
 </form>
 <br>
 <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_end">戻る</a>
