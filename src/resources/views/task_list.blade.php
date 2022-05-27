@@ -1,103 +1,63 @@
-@extends('layout')
+@extends('fullcalendar')
 
 
 @section('content')
-<link href='css/main.css' rel='stylesheet'>
-<script src='js/main.js'></script>
-<body>
-  <form>
 
-    
-    <h1>タスク一覧</h1>
-    <div class="container">
-      <h3 class="mb-5"><a href="#">&lt;</a>&nbsp;2021年 6月&nbsp;<a href="#">&gt;</a></h3>
-      <table class="table table-bordered">
-        <tr>
-          <th>日</th>
-          <th>月</th>
-          <th>火</th>
-          <th>水</th>
-          <th>木</th>
-          <th>金</th>
-          <th>土</th>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>1</td>
-          @foreach($tasks as $task)
-          <p><a href="{{ route('task_detail',[$task->task_id]) }}">{{ $task ->task_name }}</a></p>
-          @csrf
-          @endforeach
-          <p> {{ \Carbon\Carbon::now()->format("Y/m/d") }} </p>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-          <td>9</td>
-          <td>10</td>
-          <td>11</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>14</td>
-          <td>15</td>
-          <td class="today">16</td>
-          <td>17</td>
-          <td>18</td>
-          <td>19</td>
-        </tr>
-        <tr>
-          <td>20</td>
-          <td>21</td>
-          <td>22</td>
-          <td>23</td>
-          <td>24</td>
-          <td>25</td>
-          <td>26</td>
-        </tr>
-        <tr>
-          <td>27</td>
-          <td>28</td>
-          <td>29</td>
-          <td>30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-    </div>
-    {{-- <table class="table table-bordered">
-      <thead>
-        <tr>
-          @foreach (['日', '月', '火', '水', '木', '金', '土'] as $dayOfWeek)
-          <th>{{ $dayOfWeek }}</th>
-          @endforeach
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($dates as $date)
-        @if ($date->dayOfWeek == 0)
-        <tr>
-          @endif
-          <td @if ($date->month != $currentMonth)
-            class="bg-secondary"
-            @endif
-            >
-            {{ $date->day }}
-          </td>
-          @if ($date->dayOfWeek == 6)
-        </tr>
-        @endif
-        @endforeach
-      </tbody>
-    </table> --}}
-    <a href="http://localhost/index">トップページ</a>
-  </form>
-    @endsection
+
+
+<h1>タスク一覧</h1>
+<form class="row g-3" method="POST" action="{{ route('task_end') }}">
+  @csrf
+  <div class="col-md-6">
+    <input class="form-control" type="text" name="task_name" maxlength="30" placeholder="タスク名" >
+    *入力必須
+  </div>
+  <div class="col-md-6">
+
+    <input class="form-control" type="text" name="task_det" placeholder="タスク詳細" maxlength="30">
+  </div>
+
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">開始日付</label>
+    <input class="form-control" type="date" name="task_date" min="<?php echo date('Y-m-d'); ?>"
+      value="<?php echo date('Y-m-d'); ?>">
+  </div>
+
+ <!-- <div class="col-md-2">
+    <label for="inputZip" class="form-label">開始時間</label>
+    <input class="form-control" type="time" name="task_datetime">
+  </div>
+  <div class="col-md-2"> -->
+
+    <label for="inputZip" class="form-label">完了期限</label>
+    <input class="form-control" type="date" name="task_comp" min="<?php echo date('Y-m-d'); ?>">
+
+  </div>
+
+
+
+  <div class="col-md-2">
+    <label for="inputState" class="form-label">優先度</label>
+    <select name='task_pri' class="form-select">
+      <option value='#ff0000'>優先(赤)</option>
+      <option value='#00ffff'>それなりに(青)</option>
+      <option value='#00ff00'>どっちでも(緑)</option>
+    </select>
+  </div>
+
+  <div class="col-md-2">
+  <label for="inputState" class="form-label">ステータス</label>
+  <select class="form-select" name='task_sta'>
+    <option value='1'>進行中</option>
+  </select>
+</div>
+  <p class="card-text"><input class="btn btn-primary" type="submit" value="登録">
+
+
+  <div id='calendar'></div>
+
+
+
+  <a href="http://localhost/index">トップページ</a>
+</form>
+@endsection

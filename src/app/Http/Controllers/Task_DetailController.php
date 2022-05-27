@@ -26,6 +26,8 @@ class Task_DetailController extends Controller
         $tasks-> task_datetime = $request->task_datetime;
         $tasks-> task_pri = $request->task_pri;
         $tasks-> task_comp = $request->task_comp;
+        $tasks-> task_reach = $request->task_reach;
+        $tasks-> task_sta = $request->task_sta;
         $tasks->save();
 
         return redirect()->route('task_detail',['id' => $tasks->task_id]);

@@ -2,20 +2,16 @@
 
 
 @section('content')
-    <body>
 
           <h1>トップページ</h1>
 
-          <a href="http://localhost/task_input">タスク登録</a>
-
-          <br>
+          <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_end">見終えた作品</a>
           
-          <a href="http://localhost/task_list">タスク一覧</a>
+          <p class="card-text"><a class="btn btn-primary" href="http://localhost/task_list">見たい作品</a>
 
-          <br>
           <form method="POST" action="{{ route('logout') }}">
              @csrf
-          <input type="submit" value="ログアウト">
+             <p class="card-text"><input class="btn btn-primary" type="submit" value="ログアウト">
 
       </form>
 @endsection
