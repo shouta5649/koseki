@@ -42,7 +42,6 @@ eventClick: function(info) {
   @yield('content')
 
   <footer>
-    <p>フッター</p>
   </footer>
 </body>
 

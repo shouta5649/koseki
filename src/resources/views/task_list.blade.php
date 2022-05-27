@@ -5,16 +5,16 @@
 
 
 
-<h1>タスク一覧</h1>
+<h1>見たい作品</h1>
 <form class="row g-3" method="POST" action="{{ route('task_end') }}">
   @csrf
   <div class="col-md-6">
-    <input class="form-control" type="text" name="task_name" maxlength="30" placeholder="タスク名" >
+    <input class="form-control" type="text" name="task_name" maxlength="30" placeholder="作品名" >
     *入力必須
   </div>
   <div class="col-md-6">
 
-    <input class="form-control" type="text" name="task_det" placeholder="タスク詳細" maxlength="30">
+    <input class="form-control" type="text" name="task_det" placeholder="作品詳細" maxlength="30">
   </div>
 
   <div class="col-md-2">

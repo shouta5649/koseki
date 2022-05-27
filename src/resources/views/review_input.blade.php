@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>レビュー登録</h1>
+<h1>{{ $task->task_name }}</h1>
 <form class="row g-3" method="POST" action="{{ route('review_input') }}">
     @csrf
     
